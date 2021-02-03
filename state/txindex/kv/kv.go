@@ -433,7 +433,7 @@ func (txi *TxIndex) ReducedSearch(ctx context.Context, q *query.Query) ([]*types
 				break
 			default:
 				// skip keys
-				if skipCount < q.Pagination.Skip {
+				if skipCount < q.Pagination.Skip { 
 					skipCount++
 					continue
 				}
