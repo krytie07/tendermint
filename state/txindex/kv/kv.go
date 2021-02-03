@@ -426,13 +426,14 @@ func (txi *TxIndex) ReducedSearch(ctx context.Context, q *query.Query) ([]*types
 		}
 		skipCount := 0
 		results = make([]*types.TxResult, 0, q.Pagination.Size)
+		fmt.Printf("\n sortHashes.length %#v \n", len(sortHashes))					
 		for _, hat := range sortHashes {
 			select {
 			case <-ctx.Done():
 				break
 			default:
 				// skip keys
-				if skipCount > q.Pagination.Skip {
+				if skipCount < q.Pagination.Skip {
 					skipCount++
 					continue
 				}
